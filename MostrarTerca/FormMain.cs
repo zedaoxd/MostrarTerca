@@ -16,6 +16,7 @@ namespace MostrarTerca
         public FormMain()
         {
             InitializeComponent();
+            OpemForm(new FormHome());
         }
 
         private void OpemForm(Form form)

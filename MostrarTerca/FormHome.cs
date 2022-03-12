@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MostrarTerca.Persistence;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,11 @@ namespace MostrarTerca
         public FormHome()
         {
             InitializeComponent();
+        }
+
+        private void FormHome_Load(object sender, EventArgs e)
+        {
+            DataBaseConnection.ReloadDataTable(ref dataGridHome);
         }
     }
 }
