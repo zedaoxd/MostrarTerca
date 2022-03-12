@@ -34,6 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.buttonFilter = new System.Windows.Forms.Button();
+            this.buttonEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHome)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,6 +43,8 @@
             this.dataGridHome.AllowUserToAddRows = false;
             this.dataGridHome.AllowUserToDeleteRows = false;
             this.dataGridHome.AllowUserToResizeRows = false;
+            this.dataGridHome.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataGridHome.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridHome.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(91)))));
             this.dataGridHome.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridHome.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
@@ -110,12 +113,28 @@
             this.buttonFilter.UseVisualStyleBackColor = true;
             this.buttonFilter.Click += new System.EventHandler(this.buttonFilter_Click);
             // 
+            // buttonEdit
+            // 
+            this.buttonEdit.FlatAppearance.BorderSize = 0;
+            this.buttonEdit.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(200)))));
+            this.buttonEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEdit.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEdit.ForeColor = System.Drawing.Color.White;
+            this.buttonEdit.Location = new System.Drawing.Point(929, 22);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(92, 41);
+            this.buttonEdit.TabIndex = 4;
+            this.buttonEdit.Text = "Edit";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1048, 537);
+            this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonFilter);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.label1);
@@ -136,5 +155,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.Button buttonFilter;
+        private System.Windows.Forms.Button buttonEdit;
     }
 }

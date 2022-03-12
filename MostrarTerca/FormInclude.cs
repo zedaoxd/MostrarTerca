@@ -15,19 +15,43 @@ namespace MostrarTerca
     public partial class FormInclude : Form
     {
         private static string[] optionsGas = new string[]
-{
+        {
             "1 - Gasoline",
             "2 - Alcohol",
             "3 - Flex",
             "4 - Diesel",
             "5 - Natural Gas"
-};
+        };
         private int id;
         private Vehicle vehicle;
+
+        public static string[] OptionsGas => optionsGas;
 
         public FormInclude()
         {
             InitializeComponent();
+            id = 0;
+        }
+
+        public FormInclude(int Id)
+        {
+            InitializeComponent();
+            id = Id;
+            vehicle = DataBaseConnection.GetVehicle(id);
+            if (vehicle != null)
+                SetDataVehicleToEdit();
+        }
+
+        private void SetDataVehicleToEdit()
+        {
+            textBoxBrand.Text = vehicle.Name;
+            textBoxColor.Text = vehicle.Color;
+            textBoxModel.Text = vehicle.Model;
+            textBoxPrice.Text = vehicle.Price.ToString();
+            textBoxYear.Text = vehicle.Year.ToString();
+            textBoxYearManufacture.Text = vehicle.Manufacturing.ToString();
+            comboBoxAutomatic.Text = vehicle.Automatic.ToString();
+            comboBoxFuel.Text = vehicle.Fuel.ToString();
         }
 
         private void FormInclude_Load(object sender, EventArgs e)
@@ -49,7 +73,21 @@ namespace MostrarTerca
             if (DataBaseConnection.SaveVehicle(textBoxBrand.Text, textBoxModel.Text, textBoxYear.Text, textBoxYearManufacture.Text,
                     textBoxColor.Text, comboBoxFuel.Text, comboBoxAutomatic.Text, textBoxPrice.Text))
             {
+                ClearAllFields();
                 MessageBox.Show("Vehicle Added");
+            }
+        }
+
+        private void ClearAllFields()
+        {
+            TextBox[] texts = new TextBox[]
+            {
+                textBoxBrand, textBoxModel, textBoxYear, textBoxYearManufacture, textBoxColor, textBoxPrice,
+            };
+
+            foreach (var text in texts)
+            {
+                text.Text = "";
             }
         }
 

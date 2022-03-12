@@ -71,6 +71,5 @@ namespace MostrarTerca
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int Iparam);
 
-
     }
 }

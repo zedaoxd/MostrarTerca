@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MostrarTerca.Model;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -11,6 +12,50 @@ namespace MostrarTerca.Persistence
 {
     public class DataBaseConnection
     {
+        public static Vehicle GetVehicle(int id)
+        {
+            try
+            {
+                var sqlQuery = $"SELECT * FROM tb_Vehicles WHERE Id={id}";
+
+                using (SqlConnection conn = new SqlConnection(Conn.StrConn))
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, conn))
+                {
+                    conn.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            if (reader.Read())
+                            {
+                                var vehicle = new Vehicle
+                                {
+                                    Id = Convert.ToInt32(reader["Id"]),
+                                    Name = reader["Name"].ToString(),
+                                    Model = reader["Model"].ToString(),
+                                    Year = Convert.ToInt32(reader["Year"]),
+                                    Manufacturing = Convert.ToInt32(reader["Manufacturing"]),
+                                    Color = reader["Color"].ToString(),
+                                    Price = Convert.ToInt32(reader["Price"]),
+                                    Fuel = FormInclude.OptionsGas[Convert.ToInt32(reader["Fuel"]) - 1],
+                                    Automatic = Convert.ToBoolean(reader["Automatic"])
+                                };
+
+                                return vehicle;
+                            }
+                        }
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return new Vehicle();
+        }
+
+
         public static void ReloadDataTable(ref DataGridView dataGrid)
         {
             try

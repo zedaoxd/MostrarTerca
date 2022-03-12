@@ -30,5 +30,28 @@ namespace MostrarTerca
 
             DataBaseConnection.SearchByBrand(textBoxSearch.Text, ref dataGridHome);
         }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            var id = Convert.ToInt32(dataGridHome.Rows[dataGridHome.CurrentCell.RowIndex].Cells[0].Value);
+            OpenForm(new FormInclude(id));
+            //FormInclude formInclude = new FormInclude(Convert.ToInt32(id));
+            //formInclude.Show();
+        }
+
+        private void OpenForm(Form form)
+        {
+
+            if (this.Controls.Count > 0)
+            {
+                this.Controls.Clear();
+            }
+
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            this.Controls.Add(form);
+            this.Tag = form;
+            form.Show();
+        }
     }
 }
