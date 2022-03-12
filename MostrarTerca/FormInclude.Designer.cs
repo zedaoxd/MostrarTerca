@@ -251,6 +251,7 @@
             this.buttonSave.TabIndex = 18;
             this.buttonSave.Text = "Save";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // FormInclude
             // 
@@ -279,6 +280,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormInclude";
             this.Text = "FormInclude";
+            this.Load += new System.EventHandler(this.FormInclude_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
