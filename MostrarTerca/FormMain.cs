@@ -34,17 +34,15 @@ namespace MostrarTerca
             SendMessage(Handle, 0x112, 0xf012, 0);
         }
 
+        private void BarTitle_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(Handle, 0x112, 0xf012, 0);
+        }
+
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int Iparam);
-
-        private void BarTitle_MouseDown(object sender, MouseEventArgs e)
-        {
-        
-            ReleaseCapture();
-            SendMessage(Handle, 0x112, 0xf012, 0);
-            
-        }
     }
 }
