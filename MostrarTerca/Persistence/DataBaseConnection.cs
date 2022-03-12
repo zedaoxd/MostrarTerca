@@ -83,13 +83,23 @@ namespace MostrarTerca.Persistence
             }
         }
 
-        public static bool SaveVehicle(string Name, string Model, string Year, string Manufacturing, string Color, string Fuel, string Automatic, string Price)
+        public static bool SaveVehicle(int id, string Name, string Model, string Year, string Manufacturing, string Color, string Fuel, string Automatic, string Price)
         {
             try
             {
-                var sqlQuery = "INSERT INTO tb_Vehicles (Name, Model, Year, Manufacturing, Color, Fuel, Automatic, Price)" +
+                var sqlQuery = "";
+                if (id <= 0)
+                {
+                    sqlQuery = "INSERT INTO tb_Vehicles (Name, Model, Year, Manufacturing, Color, Fuel, Automatic, Price)" +
                         $"VALUES ('{Name}', '{Model}', {Year}, {Manufacturing}, '{Color}', {Fuel.Substring(0, 1)}, " +
                         $"{(Automatic.Substring(0, 1).ToUpper() == "Y" ? 1 : 0)}, {Price})";
+                }
+                else
+                {
+                    sqlQuery = $"UPDATE tb_Vehicles SET Name='{Name}', Model='{Model}', Year={Year}, Manufacturing={Manufacturing}," +
+                        $" Color='{Color}', Fuel={Fuel.Substring(0, 1)}, Automatic={(Automatic.Substring(0, 1).ToUpper() == "Y" ? 1 : 0)}, " +
+                        $"Price={Price} WHERE Id={id}";
+                }
 
                 using (SqlConnection cn = new SqlConnection(Conn.StrConn))
                 using (SqlCommand cmd = new SqlCommand(sqlQuery, cn))

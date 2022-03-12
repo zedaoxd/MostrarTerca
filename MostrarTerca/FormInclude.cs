@@ -50,7 +50,7 @@ namespace MostrarTerca
             textBoxPrice.Text = vehicle.Price.ToString();
             textBoxYear.Text = vehicle.Year.ToString();
             textBoxYearManufacture.Text = vehicle.Manufacturing.ToString();
-            comboBoxAutomatic.Text = vehicle.Automatic.ToString();
+            comboBoxAutomatic.Text = vehicle.Automatic == true ? "Yes" : "No";
             comboBoxFuel.Text = vehicle.Fuel.ToString();
         }
 
@@ -70,11 +70,18 @@ namespace MostrarTerca
 
         private void SaveVehicle()
         {
-            if (DataBaseConnection.SaveVehicle(textBoxBrand.Text, textBoxModel.Text, textBoxYear.Text, textBoxYearManufacture.Text,
+            if (DataBaseConnection.SaveVehicle(id, textBoxBrand.Text, textBoxModel.Text, textBoxYear.Text, textBoxYearManufacture.Text,
                     textBoxColor.Text, comboBoxFuel.Text, comboBoxAutomatic.Text, textBoxPrice.Text))
             {
                 ClearAllFields();
-                MessageBox.Show("Vehicle Added");
+                if (id <= 0)
+                {
+                    MessageBox.Show("Vehicle Added");
+                }
+                else
+                {
+                    MessageBox.Show("Edited Vehicle");
+                }
             }
         }
 
