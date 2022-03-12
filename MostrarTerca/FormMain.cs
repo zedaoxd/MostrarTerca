@@ -18,6 +18,25 @@ namespace MostrarTerca
             InitializeComponent();
         }
 
+        private void OpemForm(Form form)
+        {
+            if (panelContent.Controls.Count > 0)
+            {
+                panelContent.Controls.Clear();
+            }
+
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            panelContent.Controls.Add(form);
+            panelContent.Tag = form;
+            form.Show();
+        }
+
+        private void buttonHome_Click(object sender, EventArgs e)
+        {
+            OpemForm(new FormHome());
+        }
+
         private void buttonClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
