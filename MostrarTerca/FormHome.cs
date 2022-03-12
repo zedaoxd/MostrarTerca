@@ -22,5 +22,13 @@ namespace MostrarTerca
         {
             DataBaseConnection.ReloadDataTable(ref dataGridHome);
         }
+
+        private void buttonFilter_Click(object sender, EventArgs e)
+        {
+            if (textBoxSearch == null || buttonFilter.Text == "")
+                return;
+
+            DataBaseConnection.SearchByBrand(textBoxSearch.Text, ref dataGridHome);
+        }
     }
 }

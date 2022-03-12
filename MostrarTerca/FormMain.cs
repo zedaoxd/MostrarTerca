@@ -16,10 +16,10 @@ namespace MostrarTerca
         public FormMain()
         {
             InitializeComponent();
-            OpemForm(new FormHome());
+            OpenForm(new FormHome());
         }
 
-        private void OpemForm(Form form)
+        private void OpenForm(Form form)
         {
             if (panelContent.Controls.Count > 0)
             {
@@ -33,9 +33,14 @@ namespace MostrarTerca
             form.Show();
         }
 
+        private void buttonOpenAddScreen_Click(object sender, EventArgs e)
+        {
+            OpenForm(new FormInclude());
+        }
+
         private void buttonHome_Click(object sender, EventArgs e)
         {
-            OpemForm(new FormHome());
+            OpenForm(new FormHome());
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -60,9 +65,12 @@ namespace MostrarTerca
             SendMessage(Handle, 0x112, 0xf012, 0);
         }
 
+        // mover app com o cursor
         [DllImport("user32.dll", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int Iparam);
+
+
     }
 }

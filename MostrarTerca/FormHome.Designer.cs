@@ -31,6 +31,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dataGridHome = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonFilter = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHome)).BeginInit();
             this.SuspendLayout();
             // 
@@ -70,12 +73,52 @@
             this.dataGridHome.Size = new System.Drawing.Size(1024, 438);
             this.dataGridHome.TabIndex = 0;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(274, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 18);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Brand:";
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxSearch.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxSearch.ForeColor = System.Drawing.Color.White;
+            this.textBoxSearch.Location = new System.Drawing.Point(335, 30);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(269, 26);
+            this.textBoxSearch.TabIndex = 2;
+            // 
+            // buttonFilter
+            // 
+            this.buttonFilter.FlatAppearance.BorderSize = 0;
+            this.buttonFilter.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(66)))), ((int)(((byte)(200)))));
+            this.buttonFilter.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFilter.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonFilter.ForeColor = System.Drawing.Color.White;
+            this.buttonFilter.Location = new System.Drawing.Point(610, 22);
+            this.buttonFilter.Name = "buttonFilter";
+            this.buttonFilter.Size = new System.Drawing.Size(92, 41);
+            this.buttonFilter.TabIndex = 3;
+            this.buttonFilter.Text = "Filter";
+            this.buttonFilter.UseVisualStyleBackColor = true;
+            this.buttonFilter.Click += new System.EventHandler(this.buttonFilter_Click);
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1048, 537);
+            this.Controls.Add(this.buttonFilter);
+            this.Controls.Add(this.textBoxSearch);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridHome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormHome";
@@ -83,11 +126,15 @@
             this.Load += new System.EventHandler(this.FormHome_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHome)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridHome;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonFilter;
     }
 }
