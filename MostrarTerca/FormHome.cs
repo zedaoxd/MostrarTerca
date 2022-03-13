@@ -13,6 +13,17 @@ namespace MostrarTerca
 {
     public partial class FormHome : Form
     {
+
+        private string[] optionsFilter = new string[]
+        {
+            "Name",
+            "Model",
+            "Year",
+            "Manufacturing",
+            "Color",
+            "Price",
+        };
+
         public FormHome()
         {
             InitializeComponent();
@@ -21,6 +32,9 @@ namespace MostrarTerca
         private void FormHome_Load(object sender, EventArgs e)
         {
             DataBaseConnection.ReloadDataTable(ref dataGridHome);
+            comboBoxOptionsFilter.Items.Clear();
+            comboBoxOptionsFilter.Items.AddRange(optionsFilter);
+            comboBoxOptionsFilter.SelectedIndex = 0;
         }
 
         private void buttonFilter_Click(object sender, EventArgs e)
@@ -28,7 +42,8 @@ namespace MostrarTerca
             if (textBoxSearch == null || buttonFilter.Text == "")
                 return;
 
-            DataBaseConnection.SearchByBrand(textBoxSearch.Text, ref dataGridHome);
+            var option = (string)comboBoxOptionsFilter.SelectedItem;
+            DataBaseConnection.SearchBy(option ,textBoxSearch.Text, ref dataGridHome);
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)

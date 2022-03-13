@@ -36,6 +36,7 @@
             this.buttonFilter = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.comboBoxOptionsFilter = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridHome)).BeginInit();
             this.SuspendLayout();
             // 
@@ -82,11 +83,11 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(274, 34);
+            this.label1.Location = new System.Drawing.Point(105, 33);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 18);
+            this.label1.Size = new System.Drawing.Size(69, 18);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Brand:";
+            this.label1.Text = "Filter by:";
             // 
             // textBoxSearch
             // 
@@ -144,12 +145,24 @@
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // comboBoxOptionsFilter
+            // 
+            this.comboBoxOptionsFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
+            this.comboBoxOptionsFilter.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxOptionsFilter.ForeColor = System.Drawing.Color.White;
+            this.comboBoxOptionsFilter.FormattingEnabled = true;
+            this.comboBoxOptionsFilter.Location = new System.Drawing.Point(180, 29);
+            this.comboBoxOptionsFilter.Name = "comboBoxOptionsFilter";
+            this.comboBoxOptionsFilter.Size = new System.Drawing.Size(149, 28);
+            this.comboBoxOptionsFilter.TabIndex = 6;
+            // 
             // FormHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(66)))), ((int)(((byte)(82)))));
             this.ClientSize = new System.Drawing.Size(1048, 537);
+            this.Controls.Add(this.comboBoxOptionsFilter);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonEdit);
             this.Controls.Add(this.buttonFilter);
@@ -174,5 +187,6 @@
         private System.Windows.Forms.Button buttonFilter;
         private System.Windows.Forms.Button buttonEdit;
         private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.ComboBox comboBoxOptionsFilter;
     }
 }

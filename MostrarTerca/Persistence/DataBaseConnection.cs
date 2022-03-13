@@ -72,12 +72,34 @@ namespace MostrarTerca.Persistence
             }
         }
 
-        public static void SearchByBrand(string search, ref DataGridView data)
+        public static void SearchBy(string option, string search, ref DataGridView data)
         {
             using (SqlConnection cn = new SqlConnection(Conn.StrConn))
             {
+
                 cn.Open();
-                var sqlQuery = $"SELECT * FROM tb_Vehicles WHERE Name LIKE '%{search}%' ORDER BY Year";
+                var sqlQuery = "SELECT * FROM tb_Vehicles WHERE ";
+                switch (option)
+                {
+                    case "Name":
+                        sqlQuery += $"Name LIKE '%{search}%' ORDER BY Name";
+                        break;
+                    case "Model":
+                        sqlQuery += $"Model LIKE '%{search}%' ORDER BY Name";
+                        break;
+                    case "Year":
+                        sqlQuery += $"Year >= {search} ORDER BY Year";
+                        break;
+                    case "Manufacturing":
+                        sqlQuery += $"Manufacturing >= {search} ORDER BY Manufacturing";
+                        break;
+                    case "Color":
+                        sqlQuery += $"Color LIKE '%{search}%' ORDER BY Color";
+                        break;
+                    case "Price":
+                        sqlQuery += $"Price >= {search} ORDER BY Price";
+                        break;
+                }
                 LoadDataToDataGrid(cn, sqlQuery, ref data);
                 cn.Close();
             }
@@ -85,13 +107,21 @@ namespace MostrarTerca.Persistence
 
         public static void DeleteVehicle(int id)
         {
-            var sqlQuery = $"DELETE FROM tb_Vehicles WHERE id={id}";
-            using(SqlConnection cn = new SqlConnection(Conn.StrConn))
-            using(SqlCommand cmd = new SqlCommand(sqlQuery, cn))
+            try
             {
-                cn.Open();
-                cmd.ExecuteNonQuery();
+                var sqlQuery = $"DELETE FROM tb_Vehicles WHERE id={id}";
+                using (SqlConnection cn = new SqlConnection(Conn.StrConn))
+                using (SqlCommand cmd = new SqlCommand(sqlQuery, cn))
+                {
+                    cn.Open();
+                    cmd.ExecuteNonQuery();
+                }
             }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            
         }
 
         public static bool SaveVehicle(int id, string Name, string Model, string Year, string Manufacturing, string Color, string Fuel, string Automatic, string Price)
