@@ -83,6 +83,17 @@ namespace MostrarTerca.Persistence
             }
         }
 
+        public static void DeleteVehicle(int id)
+        {
+            var sqlQuery = $"DELETE FROM tb_Vehicles WHERE id={id}";
+            using(SqlConnection cn = new SqlConnection(Conn.StrConn))
+            using(SqlCommand cmd = new SqlCommand(sqlQuery, cn))
+            {
+                cn.Open();
+                cmd.ExecuteNonQuery();
+            }
+        }
+
         public static bool SaveVehicle(int id, string Name, string Model, string Year, string Manufacturing, string Color, string Fuel, string Automatic, string Price)
         {
             try

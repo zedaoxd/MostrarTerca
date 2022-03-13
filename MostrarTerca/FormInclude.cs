@@ -81,8 +81,24 @@ namespace MostrarTerca
                 else
                 {
                     MessageBox.Show("Edited Vehicle");
+                    OpenForm(new FormHome());
                 }
+                
             }
+        }
+
+        private void OpenForm(Form form)
+        {
+            if (this.Controls.Count > 0)
+            {
+                this.Controls.Clear();
+            }
+
+            form.TopLevel = false;
+            form.Dock = DockStyle.Fill;
+            this.Controls.Add(form);
+            this.Tag = form;
+            form.Show();
         }
 
         private void ClearAllFields()

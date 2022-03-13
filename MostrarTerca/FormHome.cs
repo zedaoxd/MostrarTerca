@@ -35,13 +35,10 @@ namespace MostrarTerca
         {
             var id = Convert.ToInt32(dataGridHome.Rows[dataGridHome.CurrentCell.RowIndex].Cells[0].Value);
             OpenForm(new FormInclude(id));
-            //FormInclude formInclude = new FormInclude(Convert.ToInt32(id));
-            //formInclude.Show();
         }
 
         private void OpenForm(Form form)
         {
-
             if (this.Controls.Count > 0)
             {
                 this.Controls.Clear();
@@ -52,6 +49,17 @@ namespace MostrarTerca
             this.Controls.Add(form);
             this.Tag = form;
             form.Show();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want remove this row", "Remove Row", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                var id = Convert.ToInt32(dataGridHome.Rows[dataGridHome.CurrentCell.RowIndex].Cells[0].Value);
+                DataBaseConnection.DeleteVehicle(id);
+                MessageBox.Show("Deleted");
+                DataBaseConnection.ReloadDataTable(ref dataGridHome);
+            }
         }
     }
 }

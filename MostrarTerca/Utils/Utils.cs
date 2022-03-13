@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace MostrarTerca.Utils
 {
-    internal class Utils
+    public static class Utils
     {
         public static void OpenForm(Form form, Panel panel)
         {
