@@ -28,21 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             this.BarTitle = new System.Windows.Forms.Panel();
             this.ButtonMinimize = new System.Windows.Forms.PictureBox();
             this.buttonClose = new System.Windows.Forms.PictureBox();
             this.MenuVertical = new System.Windows.Forms.Panel();
+            this.pictureBoxClose = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonOpenAddScreen = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonHome = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.labelHour = new System.Windows.Forms.Label();
+            this.timerHourLabel = new System.Windows.Forms.Timer(this.components);
+            this.labelDate = new System.Windows.Forms.Label();
             this.BarTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ButtonMinimize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonClose)).BeginInit();
             this.MenuVertical.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -84,6 +90,9 @@
             // MenuVertical
             // 
             this.MenuVertical.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.MenuVertical.Controls.Add(this.labelDate);
+            this.MenuVertical.Controls.Add(this.labelHour);
+            this.MenuVertical.Controls.Add(this.pictureBoxClose);
             this.MenuVertical.Controls.Add(this.panel3);
             this.MenuVertical.Controls.Add(this.buttonOpenAddScreen);
             this.MenuVertical.Controls.Add(this.panel1);
@@ -94,6 +103,18 @@
             this.MenuVertical.Name = "MenuVertical";
             this.MenuVertical.Size = new System.Drawing.Size(220, 576);
             this.MenuVertical.TabIndex = 1;
+            // 
+            // pictureBoxClose
+            // 
+            this.pictureBoxClose.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBoxClose.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxClose.Image")));
+            this.pictureBoxClose.Location = new System.Drawing.Point(3, 523);
+            this.pictureBoxClose.Name = "pictureBoxClose";
+            this.pictureBoxClose.Size = new System.Drawing.Size(50, 50);
+            this.pictureBoxClose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxClose.TabIndex = 7;
+            this.pictureBoxClose.TabStop = false;
+            this.pictureBoxClose.Click += new System.EventHandler(this.pictureBoxClose_Click);
             // 
             // panel3
             // 
@@ -160,6 +181,33 @@
             this.panelContent.Size = new System.Drawing.Size(1064, 576);
             this.panelContent.TabIndex = 2;
             // 
+            // labelHour
+            // 
+            this.labelHour.AutoSize = true;
+            this.labelHour.Font = new System.Drawing.Font("Century Gothic", 50F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHour.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(80)))), ((int)(((byte)(200)))));
+            this.labelHour.Location = new System.Drawing.Point(3, 418);
+            this.labelHour.Name = "labelHour";
+            this.labelHour.Size = new System.Drawing.Size(186, 81);
+            this.labelHour.TabIndex = 8;
+            this.labelHour.Text = "Hour";
+            // 
+            // timerHourLabel
+            // 
+            this.timerHourLabel.Enabled = true;
+            this.timerHourLabel.Tick += new System.EventHandler(this.timerHourLabel_Tick);
+            // 
+            // labelDate
+            // 
+            this.labelDate.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelDate.ForeColor = System.Drawing.Color.PowderBlue;
+            this.labelDate.Location = new System.Drawing.Point(2, 499);
+            this.labelDate.Name = "labelDate";
+            this.labelDate.Size = new System.Drawing.Size(218, 21);
+            this.labelDate.TabIndex = 9;
+            this.labelDate.Text = "Date";
+            this.labelDate.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -176,6 +224,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.ButtonMinimize)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.buttonClose)).EndInit();
             this.MenuVertical.ResumeLayout(false);
+            this.MenuVertical.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxClose)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -193,6 +243,10 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonOpenAddScreen;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBoxClose;
+        private System.Windows.Forms.Label labelHour;
+        private System.Windows.Forms.Timer timerHourLabel;
+        private System.Windows.Forms.Label labelDate;
     }
 }
 

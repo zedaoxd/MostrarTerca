@@ -33,6 +33,12 @@ namespace MostrarTerca
             form.Show();
         }
 
+        private void timerHourLabel_Tick(object sender, EventArgs e)
+        {
+            labelHour.Text = DateTime.Now.ToString("HH:mm");
+            labelDate.Text = DateTime.Now.ToLongDateString();
+        }
+
         private void buttonOpenAddScreen_Click(object sender, EventArgs e)
         {
             OpenForm(new FormInclude());
@@ -44,6 +50,11 @@ namespace MostrarTerca
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void pictureBoxClose_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
@@ -70,6 +81,7 @@ namespace MostrarTerca
         private extern static void ReleaseCapture();
         [DllImport("user32.dll", EntryPoint = "SendMessage")]
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int Iparam);
+
 
     }
 }
